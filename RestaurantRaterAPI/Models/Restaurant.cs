@@ -12,14 +12,12 @@ namespace RestaurantRaterAPI.Models
     {
         [Key] // Key is automatically required
         public int Id { get; set; }
-
+        
         [Required]
         public string Name { get; set; }
 
         [Required]
         public double Rating { get; set; }
-
-
 
         public bool IsRecommended => Rating > 3.5; // public bool IsRecommended is simplified completely 
     }

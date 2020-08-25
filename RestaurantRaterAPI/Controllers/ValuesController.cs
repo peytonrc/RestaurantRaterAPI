@@ -9,6 +9,8 @@ namespace RestaurantRaterAPI.Controllers
 {
     public class ValuesController : ApiController
     {
+        // End points:
+
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -34,6 +36,13 @@ namespace RestaurantRaterAPI.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+
+        [Route("api/Values/GetRandomInt")]
+        public int GetRandomInt()
+        {
+            Random rand = new Random();
+            return rand.Next();
         }
     }
 }
