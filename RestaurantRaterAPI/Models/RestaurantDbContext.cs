@@ -6,12 +6,11 @@ using System.Web;
 
 namespace RestaurantRaterAPI.Models
 {
-    public class RestaurantDbContext : DbContext // Must use ctrl .
+    public class RestaurantDbContext : DbContext
     {
-        public RestaurantDbContext() : base("DefaultConnection") { } // Constructor calling base contsructor 
+        public RestaurantDbContext() : base("DefaultConnection") { }
 
-        public DbSet<Restaurant> Restaurants { get; set; } // Created restaurant property that is the whole set; stores info
-
+        public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Rating> Ratings { get; set; }
     }
 }

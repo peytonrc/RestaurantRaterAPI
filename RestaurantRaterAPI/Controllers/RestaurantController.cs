@@ -12,7 +12,7 @@ namespace RestaurantRaterAPI.Controllers
 {
     public class RestaurantController : ApiController
     {
-        private readonly RestaurantDbContext _context = new RestaurantDbContext(); // Field
+        private readonly RestaurantDbContext _context = new RestaurantDbContext();
 
         //-- Create (POST)
         [HttpPost]
@@ -28,27 +28,25 @@ namespace RestaurantRaterAPI.Controllers
                 _context.Restaurants.Add(model);
                 await _context.SaveChangesAsync();
 
-                return Ok("Good job, you added a restaurant!");
+                return Ok("You created a restaurant and it was saved!");
             }
 
             return BadRequest(ModelState);
         }
-
 
         //-- Read (GET)
         // Get by ID
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
-           Restaurant restaurant = await _context.Restaurants.FindAsync();
-            
+            Restaurant restaurant = await _context.Restaurants.FindAsync(id);
 
             if (restaurant != null)
             {
                 return Ok(restaurant);
             }
-            return NotFound(); // 404 not found
 
+            return NotFound();
         }
 
         // Get All
@@ -56,11 +54,8 @@ namespace RestaurantRaterAPI.Controllers
         public async Task<IHttpActionResult> GetAll()
         {
             List<Restaurant> restaurants = await _context.Restaurants.ToListAsync();
-            return Ok(restaurants); // 200 and returning whatever the list contains
+            return Ok(restaurants);
         }
-
-
-
 
         //-- Update (PUT)
         [HttpPut]
@@ -81,15 +76,14 @@ namespace RestaurantRaterAPI.Controllers
 
                     return Ok("Restaurant has been updated.");
                 }
-                // Did not find the restaurant
+
+                // Didn't find the restaurant
                 return NotFound();
             }
+
             // Return a bad request
             return BadRequest(ModelState);
         }
-
-
-
 
         //-- Delete (DELETE)
         [HttpDelete]
@@ -101,6 +95,7 @@ namespace RestaurantRaterAPI.Controllers
             {
                 return NotFound();
             }
+
             _context.Restaurants.Remove(entity);
 
             if (await _context.SaveChangesAsync() == 1)
@@ -108,14 +103,7 @@ namespace RestaurantRaterAPI.Controllers
                 return Ok("The restaurant was deleted.");
             }
 
-            return InternalServerError(); //500
+            return InternalServerError();
         }
-
-
-
-
-
-
-
     }
 }

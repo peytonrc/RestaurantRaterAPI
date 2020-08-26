@@ -11,41 +11,39 @@ namespace RestaurantRaterAPI.Models
 {
     public class Rating
     {
+
         // Primary Key
         [Key]
         public int Id { get; set; }
 
-
-        // Foreign Key (Restaurant Key) tells us which spot to go to 
+        // Foreign Key (Restaurant Key)
         [ForeignKey(nameof(Restaurant))]
         public int RestaurantId { get; set; }
-        // Foreign Key Navigation Property
-        public virtual Restaurant Restaurant { get; set; } //Virtual means this will let us tell the db that these two are connected. (connected to db)
 
+        // ForeignKey Navigation Property
+        public virtual Restaurant Restaurant { get; set; }
 
         [Required]
         [Range(0, 10)]
         public double FoodScore { get; set; }
 
-        [Required]
-        [Range(0, 10)]
+        [Required, Range(0, 10)]
         public double EnvironmentScore { get; set; }
 
         [Required]
         [Range(0, 10)]
         public double CleanlinessScore { get; set; }
 
+        // Add all scores and get the average out of 10
         public double AverageRating
         {
             get
             {
-                double totalScore = FoodScore + EnvironmentScore + CleanlinessScore;
+                var totalScore = FoodScore + EnvironmentScore + CleanlinessScore;
                 return totalScore / 3;
             }
         }
-         
-            
-  
+
 
     }
 }

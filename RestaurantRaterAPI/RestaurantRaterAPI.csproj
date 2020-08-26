@@ -180,6 +180,10 @@
     <Compile Include="Migrations\202008261534034_SetUpForeignKeys.Designer.cs">
       <DependentUpon>202008261534034_SetUpForeignKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008262002572_Changes.cs" />
+    <Compile Include="Migrations\202008262002572_Changes.Designer.cs">
+      <DependentUpon>202008262002572_Changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Restaurant.cs" />
@@ -278,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008261534034_SetUpForeignKeys.resx">
       <DependentUpon>202008261534034_SetUpForeignKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008262002572_Changes.resx">
+      <DependentUpon>202008262002572_Changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
